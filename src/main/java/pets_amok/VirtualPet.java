@@ -7,6 +7,7 @@ public class VirtualPet extends VirtualPetShelter {
     private int thirst;
     private int tiredness;
     private int mood;
+    private int maintenance;
 
     // Constructors
 
@@ -75,6 +76,14 @@ public class VirtualPet extends VirtualPetShelter {
         this.mood = mood;
     }
 
+    public int getMaintenance() {
+        return maintenance;
+    }
+
+    public void setMaintenance(int maintenance) {
+        this.maintenance = maintenance;
+    }
+
     // Methods
 
     public void feed() {
@@ -100,15 +109,19 @@ public class VirtualPet extends VirtualPetShelter {
 
         setTiredness(getTiredness() - 5);
 
-        if (getHunger() >= 100 || getThirst() >= 100) {
+        setMaintenance(getMaintenance() - 10);
+
+        if (getHunger() >= 100 || getThirst() >= 100 || getMaintenance() >= 100) {
             setMood(getMood() - 0);
-        } else if (getHunger() >= 70 || getThirst() >= 70) {
+        } else if (getHunger() >= 70 || getThirst() >= 70 || getMaintenance() >= 70) {
             setMood(getMood() - 5);
-        } else if (getHunger() >= 40 || getThirst() >= 40) {
+        } else if (getHunger() >= 40 || getThirst() >= 40 || getMaintenance() >= 40) {
             setMood(getMood() - 10);
-        } else if (getHunger() >= 20 || getThirst() >= 20) {
+        } else if (getHunger() >= 20 || getThirst() >= 20 || getMaintenance() >= 20) {
             setMood(getMood() - 20);
         }
+
+
     }
 
 }

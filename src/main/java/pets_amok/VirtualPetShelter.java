@@ -55,4 +55,9 @@ public class VirtualPetShelter {
     public void tick() {
         petCollections.forEach((name, pet) -> pet.tick());
     }
+
+    public void oiling(String petName){
+        // VirtualPet roboPet = petCollections.get(petName);
+        petCollections.get(petName).oiling(petName);
+    }
 }
