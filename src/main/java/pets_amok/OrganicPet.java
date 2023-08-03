@@ -7,16 +7,29 @@ public class OrganicPet extends VirtualPet implements Dog, Cat {
         super.setMaintenance(newMaintenance);
     }
 
+    public void feed() {
+        setHunger(getHunger() + 20);
+    }
+
+    public void drink() {
+        setThirst(getThirst() + 20);
+    }
+
+
     @Override
     public void cleanLitterBox() {
         super.setMaintenance(100);
     }
 
     @Override
+    public void cleanCage(){
+        super.setMaintenance(100);
+    }
+
+    @Override
     public void walkDoggy() {
-        setMaintenance(100);
+        super.setMaintenance(getMaintenance() + 5);
         setMood(getMood() + 30);
     }
 
-    // Cat needs litter box and dog needs a cage. cannot be oiled
 }

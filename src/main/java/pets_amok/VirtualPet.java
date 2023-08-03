@@ -16,6 +16,7 @@ public class VirtualPet extends VirtualPetShelter {
         setThirst(100);
         setTiredness(100);
         setMood(100);
+        setMaintenance(100);
     }
 
     public VirtualPet(String newName, String newDesc) {
@@ -25,6 +26,7 @@ public class VirtualPet extends VirtualPetShelter {
         setThirst(100);
         setTiredness(100);
         setMood(100);
+        setMaintenance(100);
     }
 
     // Getter and Setters
@@ -85,14 +87,6 @@ public class VirtualPet extends VirtualPetShelter {
     }
 
     // Methods
-
-    public void feed() {
-        setHunger(getHunger() + 20);
-    }
-
-    public void drink() {
-        setThirst(getThirst() + 20);
-    }
 
     public void play() {
         setMood(getMood() + 30);

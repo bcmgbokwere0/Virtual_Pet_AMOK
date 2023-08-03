@@ -35,7 +35,7 @@ public class VirtualPetShelter {
         VirtualPet adoptedPet = petCollections.get(petName);
         petCollections.remove(adoptedPet.getName(), adoptedPet);
     }
-
+    // feed/water all the organic pets no robotic pets
     public void feedPets() {
         petCollections.forEach((name, pet) -> pet.feed());
     }
@@ -56,8 +56,25 @@ public class VirtualPetShelter {
         petCollections.forEach((name, pet) -> pet.tick());
     }
 
-    public void oiling(String petName){
+    public void oilingRobots(){
         // VirtualPet roboPet = petCollections.get(petName);
-        petCollections.get(petName).oiling(petName);
+        petCollections.forEach((name, pet) -> pet.oiling())
+    }
+
+    public void cleanLitter(String tempString){
+        petCollections.get(tempString).cleanLitterBox();
+    }
+
+    public void cageClean(String tempString){
+        petCollections.get(tempString).cleanCage();
+    }
+    
+    public void walkDog(String tempString){
+        petCollections.get(tempString).walkDoggy();
+    }
+
+    // walk all possible dogs?
+    // public void walkAllDogs(){
+        // petCollections.forEach((name, pet) -> pet.walkDoggy());
     }
 }
