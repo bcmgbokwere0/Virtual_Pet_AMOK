@@ -145,13 +145,13 @@ public class VirtualPet {
 
     public void status(){
         if (getMood() >= 80) {
-            System.out.println("Pet feels great");
+            System.out.println("Feels great!");
         } else if (getMood() >=50) {
-            System.out.println("Pet feels ok");
+            System.out.println("Feels ok.");
         } else if (getMood() >= 30) {
-            System.out.println("Pet is uneasy");
+            System.out.println("Is feeling uneasy.. :/");
         } else if (getMood() >= 0){
-            System.out.println("Pet is unhappy");
+            System.out.println("Is unhappy... :(");
         }
     }
 

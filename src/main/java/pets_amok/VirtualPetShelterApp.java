@@ -175,16 +175,54 @@ public class VirtualPetShelterApp {
                     break;
 
                 case 5:
-                
+                    System.out.println("----------------------------------------------------------");
+
+                    System.out
+                            .println("You released all the dogs from their cages, gave them leashes, and walked them");
+
+                    System.out.println(
+                            "All dogs became ecstatic and even avoided some accidents thanks to not being in their cages....");
+
+                    System.out.println("----------------------------------------------------------");
+
+                    petCollections.walkAllDogs();
 
                     break;
                 case 6:
+                    System.out.println("----------------------------------------------------------");
+
+                    System.out
+                            .println("You geared up and braced yourself to clean all the dog cages and cat litter....");
+
+                    System.out.println("All the pet's waste levels were refreshed.... but at what cost???");
+
+                    System.out.println("----------------------------------------------------------");
+
+                    petCollections.cleanHouse();
 
                     break;
                 case 7:
+                    System.out.println("----------------------------------------------------------");
+
+                    System.out.println("You brought out some high quality oil and joyfully oiled all the robotic pets");
+
+                    System.out.println("That...wasn't so bad? All robotic pets maintenance were replenished.");
+
+                    System.out.println("----------------------------------------------------------");
+
+                    petCollections.oilingRobots();
 
                     break;
                 case 8:
+                    System.out.println("Which pet would you like to check the status of?");
+                    for (VirtualPet pet : petCollections.allPets().values()) {
+                        System.out.println(("[" + pet.getName() + "]"));
+                        System.out.println((pet.getDesc()));
+                    }
+
+                    tempString = gameplay.nextLine();
+
+                    petCollections.checkStatus(tempString);
 
                     break;
 

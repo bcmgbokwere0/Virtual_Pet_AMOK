@@ -58,27 +58,29 @@ public class VirtualPetShelter {
     }
 
     public void oilingRobots() {
-        // VirtualPet roboPet = petCollections.get(petName);
         petCollections.forEach((name, pet) -> pet.oiling());
     }
 
-    public void cleanLitter(String tempString) {
-        petCollections.get(tempString).cleanLitterBox();
+    public void cleanHouse() {
+        petCollections.forEach((name, pet) -> pet.cleanLitterBox());
+        petCollections.forEach((name, pet) -> pet.cleanCage());
     }
 
-    public void cageClean(String tempString) {
-        petCollections.get(tempString).cleanCage();
-    }
-
-    public void walkDog(String tempString) {
-        petCollections.get(tempString).walkDoggy();
-    }
-
-    public void checkStatus(String tempString){
+    public void checkStatus(String tempString) {
         petCollections.get(tempString).status();
     }
 
     // walk all possible dogs?
-    // public void walkAllDogs(){
-    // petCollections.forEach((name, pet) -> pet.walkDoggy());
+    public void walkAllDogs() {
+        petCollections.forEach((name, pet) -> pet.walkDoggy());
+    }
+
+    //
+    // public void cleanLitter(String tempString) {
+    //     petCollections.get(tempString).cleanLitterBox();
+    // }
+
+    // public void cageClean(String tempString) {
+    //     petCollections.get(tempString).cleanCage();
+    // }
 }
