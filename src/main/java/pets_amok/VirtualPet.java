@@ -1,6 +1,6 @@
 package pets_amok;
 
-public class VirtualPet extends VirtualPetShelter {
+public class VirtualPet {
     private String name;
     private String description;
     private int hunger;
@@ -96,6 +96,14 @@ public class VirtualPet extends VirtualPetShelter {
         setTiredness(100);
     }
 
+    public void feed() {
+        setHunger(getHunger() + 20);
+    }
+
+    public void drink() {
+        setThirst(getThirst() + 20);
+    }
+
     public void tick() {
         setHunger(getHunger() - 5);
 
@@ -115,7 +123,36 @@ public class VirtualPet extends VirtualPetShelter {
             setMood(getMood() - 20);
         }
 
+    }
 
+    public void cleanLitterBox() {
+        setMaintenance(100);
+    }
+
+    public void cleanCage() {
+        setMaintenance(100);
+    }
+
+    public void walkDoggy() {
+        setMaintenance(getMaintenance() + 5);
+        setMood(getMood() + 30);
+    }
+
+    public void oiling() {
+        setMaintenance(100);
+        setMood(getMood() + 30);
+    }
+
+    public void status(){
+        if (getMood() >= 80) {
+            System.out.println("Pet feels great");
+        } else if (getMood() >=50) {
+            System.out.println("Pet feels ok");
+        } else if (getMood() >= 30) {
+            System.out.println("Pet is uneasy");
+        } else if (getMood() >= 0){
+            System.out.println("Pet is unhappy");
+        }
     }
 
 }

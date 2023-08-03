@@ -19,11 +19,11 @@ public class VirtualPetShelter {
     public void setPet(VirtualPet newPet) {
         this.petCollections.put(newPet.getName(), newPet);
     }
-    
+
     // Methods
 
     public HashMap<String, VirtualPet> allPets() {
-        
+
         return petCollections;
     }
 
@@ -35,6 +35,7 @@ public class VirtualPetShelter {
         VirtualPet adoptedPet = petCollections.get(petName);
         petCollections.remove(adoptedPet.getName(), adoptedPet);
     }
+
     // feed/water all the organic pets no robotic pets
     public void feedPets() {
         petCollections.forEach((name, pet) -> pet.feed());
@@ -45,7 +46,7 @@ public class VirtualPetShelter {
     }
 
     public void play(String tempString) {
-        petCollections.get(tempString).play(); 
+        petCollections.get(tempString).play();
     }
 
     public void sleepPets() {
@@ -56,25 +57,28 @@ public class VirtualPetShelter {
         petCollections.forEach((name, pet) -> pet.tick());
     }
 
-    public void oilingRobots(){
+    public void oilingRobots() {
         // VirtualPet roboPet = petCollections.get(petName);
-        petCollections.forEach((name, pet) -> pet.oiling())
+        petCollections.forEach((name, pet) -> pet.oiling());
     }
 
-    public void cleanLitter(String tempString){
+    public void cleanLitter(String tempString) {
         petCollections.get(tempString).cleanLitterBox();
     }
 
-    public void cageClean(String tempString){
+    public void cageClean(String tempString) {
         petCollections.get(tempString).cleanCage();
     }
-    
-    public void walkDog(String tempString){
+
+    public void walkDog(String tempString) {
         petCollections.get(tempString).walkDoggy();
+    }
+
+    public void checkStatus(String tempString){
+        petCollections.get(tempString).status();
     }
 
     // walk all possible dogs?
     // public void walkAllDogs(){
-        // petCollections.forEach((name, pet) -> pet.walkDoggy());
-    }
+    // petCollections.forEach((name, pet) -> pet.walkDoggy());
 }

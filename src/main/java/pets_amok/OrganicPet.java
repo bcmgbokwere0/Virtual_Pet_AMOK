@@ -3,26 +3,22 @@ package pets_amok;
 public class OrganicPet extends VirtualPet implements Dog, Cat {
 
     @Override
-    public void setMaintenance(int newMaintenance) {
-        super.setMaintenance(newMaintenance);
-    }
-
     public void feed() {
-        setHunger(getHunger() + 20);
+        super.setHunger(getHunger() + 20);
     }
 
+    @Override
     public void drink() {
         setThirst(getThirst() + 20);
     }
 
-
     @Override
     public void cleanLitterBox() {
-        super.setMaintenance(100);
+        setMaintenance(100);
     }
 
     @Override
-    public void cleanCage(){
+    public void cleanCage() {
         super.setMaintenance(100);
     }
 
