@@ -20,6 +20,21 @@ public class VirtualPetShelter {
         this.petCollections.put(newPet.getName(), newPet);
     }
 
+    public void setPet(RoboticPet newPet) {
+        this.petCollections.put(newPet.getName(), newPet);
+    }
+
+    public void setPet(OrganicPet newPet) {
+        this.petCollections.put(newPet.getName(), newPet);
+    }
+
+    public void setPet(Cat newPet) {
+        this.petCollections.put(newPet.getName(), newPet);
+    }
+
+    public void setPet(Dog newPet) {
+        this.petCollections.put(newPet.getName(), newPet);
+    }
     // Methods
 
     public HashMap<String, VirtualPet> allPets() {
@@ -61,26 +76,19 @@ public class VirtualPetShelter {
         petCollections.forEach((name, pet) -> pet.oiling());
     }
 
-    public void cleanHouse() {
-        petCollections.forEach((name, pet) -> pet.cleanLitterBox());
+    public void cleanDogCages() {
         petCollections.forEach((name, pet) -> pet.cleanCage());
+    }
+
+    public void cleanCatLitter() {
+        petCollections.forEach((name, pet) -> pet.cleanLitterBox());
     }
 
     public void checkStatus(String tempString) {
         petCollections.get(tempString).status();
     }
 
-    // walk all possible dogs?
     public void walkAllDogs() {
         petCollections.forEach((name, pet) -> pet.walkDoggy());
     }
-
-    //
-    // public void cleanLitter(String tempString) {
-    //     petCollections.get(tempString).cleanLitterBox();
-    // }
-
-    // public void cageClean(String tempString) {
-    //     petCollections.get(tempString).cleanCage();
-    // }
 }

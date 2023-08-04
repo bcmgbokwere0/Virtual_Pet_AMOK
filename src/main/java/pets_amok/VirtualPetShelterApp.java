@@ -16,7 +16,17 @@ public class VirtualPetShelterApp {
                 "Welcome to Brian's WCCI Virtual Pet Shelter... gone wild! Here we take care of our virtual communities's virtual pets ranging from organic animals, specifically dogs and cats, as well as robotic versions!");
 
         System.out.println(
-                "Thank you for choosing to volunteer with us and for admitting your own pet. Please input the name of your pet: ");
+                "Thank you for choosing to volunteer with us and for admitting your own pet. Will you be admitting a Robotic or Organic pet? Please enter R for robotic, or O for organic:");
+
+        String petType = gameplay.nextLine();
+
+        if (petType.toLowerCase().equals("o")) {
+            System.out.println("Are you going to be admitting a Cat or dog? Please enter C for Cat, or D for Dog");
+            petType = gameplay.nextLine();
+        }
+
+        System.out.println(
+                "Great! Please input the name of your pet: ");
 
         String tempString = gameplay.nextLine();
 
@@ -24,7 +34,17 @@ public class VirtualPetShelterApp {
 
         String petDescription = gameplay.nextLine();
 
-        petCollections.addPet(new VirtualPet(tempString, petDescription));
+        switch (petType.toLowerCase()) {
+            case "r":
+                petCollections.addPet(new RoboticPet(tempString, petDescription));
+                break;
+            case "c":
+                petCollections.addPet(new Cat(tempString, petDescription));
+                break;
+            case "d":
+                petCollections.addPet(new Dog(tempString, petDescription));
+                break;
+        }
 
         System.out.println("------------------------------------------------------------------------------------");
 
@@ -39,15 +59,19 @@ public class VirtualPetShelterApp {
         while (true) {
             System.out.println("Current Stats for Organic Pets:\n");
 
-            System.out.println("Pets   |Hunger |Thirst |Mood |Tiredness |Waste ");
+            System.out.println("Pets   |Type       |Hunger |Thirst |Mood |Tiredness |Waste ");
 
-            System.out.println("-------|-------|-------|-----|----------|--------");
+            System.out.println("-------|-----------|-------|-------|-----|----------|--------");
 
             for (VirtualPet pet : petCollections.allPets().values()) {
 
                 System.out.print(String.format("%-" + 5 + "s", pet.getName()));
 
                 System.out.print("  |");
+
+                System.out.print(String.format("%-" + 5 + "s", pet.getType()));
+
+                System.out.print("    |");
 
                 System.out.print(String.format("%-" + 5 + "s", pet.getHunger()));
 
@@ -83,17 +107,19 @@ public class VirtualPetShelterApp {
 
             System.out.println("5. Walk all dogs.");
 
-            System.out.println("6. Clean Dog Cages and litter boxes.");
+            System.out.println("6. Clean Dog Cages.");
 
-            System.out.println("7. Oil all robotic pets.");
+            System.out.println("7. Clean Litter Boxes.");
 
-            System.out.println("8. Check Pet Status");
+            System.out.println("8. Oil all robotic pets.");
 
-            System.out.println("9. Admit a pet.");
+            System.out.println("9. Check Pet Status");
 
-            System.out.println("10. Adopt a pet.");
+            System.out.println("10. Admit a pet.");
 
-            System.out.println("11. End Game");
+            System.out.println("11. Adopt a pet.");
+
+            System.out.println("12. End Game");
 
             while (true) {
                 if (!gameplay.hasNextInt()) {
@@ -102,7 +128,7 @@ public class VirtualPetShelterApp {
                 } else {
                     tempString = gameplay.nextLine();
                     option = Integer.parseInt(tempString);
-                    if (option <= 11 && option > 0) {
+                    if (option <= 12 && option > 0) {
                         goodInput = true;
                     }
                     if (goodInput) {
@@ -192,16 +218,31 @@ public class VirtualPetShelterApp {
                     System.out.println("----------------------------------------------------------");
 
                     System.out
-                            .println("You geared up and braced yourself to clean all the dog cages and cat litter....");
+                            .println("You geared up and braced yourself to clean all the dog cages....");
 
-                    System.out.println("All the pet's waste levels were refreshed.... but at what cost???");
+                    System.out.println("All the dog's waste levels were refreshed.... but at what cost???");
 
                     System.out.println("----------------------------------------------------------");
 
-                    petCollections.cleanHouse();
+                    petCollections.cleanDogCages();
 
                     break;
+
                 case 7:
+                    System.out.println("----------------------------------------------------------");
+
+                    System.out
+                            .println("You geared up and grabbed your shovel to clean all the cat litter....");
+
+                    System.out.println("All the cat's waste levels were refreshed");
+
+                    System.out.println("----------------------------------------------------------");
+
+                    petCollections.cleanCatLitter();
+
+                    break;
+
+                case 8:
                     System.out.println("----------------------------------------------------------");
 
                     System.out.println("You brought out some high quality oil and joyfully oiled all the robotic pets");
@@ -213,7 +254,7 @@ public class VirtualPetShelterApp {
                     petCollections.oilingRobots();
 
                     break;
-                case 8:
+                case 9:
                     System.out.println("Which pet would you like to check the status of?");
                     for (VirtualPet pet : petCollections.allPets().values()) {
                         System.out.println(("[" + pet.getName() + "]"));
@@ -226,7 +267,7 @@ public class VirtualPetShelterApp {
 
                     break;
 
-                case 9:
+                case 10:
                     System.out.println("Whats the name of the new pet we will admit?");
 
                     tempString = gameplay.nextLine();
@@ -234,12 +275,33 @@ public class VirtualPetShelterApp {
                     System.out.println("Please give a description for " + tempString);
                     petDescription = gameplay.nextLine();
 
-                    petCollections.addPet(new VirtualPet(tempString, petDescription));
+                    System.out.println(
+                            "Will you be admitting a Robotic or Organic pet? Please enter R for robotic, or O for organic:");
+
+                    petType = gameplay.nextLine();
+
+                    if (petType.toLowerCase().equals("o")) {
+                        System.out.println(
+                                "Are you going to be admitting a Cat or dog? Please enter C for Cat, or D for Dog");
+                        petType = gameplay.nextLine();
+                    }
+
+                    switch (petType.toLowerCase()) {
+                        case "r":
+                            petCollections.addPet(new RoboticPet(tempString, petDescription));
+                            break;
+                        case "c":
+                            petCollections.addPet(new Cat(tempString, petDescription));
+                            break;
+                        case "d":
+                            petCollections.addPet(new Dog(tempString, petDescription));
+                            break;
+                    }
                     petCollections.getPet(tempString).setDesc(petDescription);
 
                     break;
 
-                case 10:
+                case 11:
                     System.out.println("Which [pet] will we welcome to a new happy family?");
                     for (VirtualPet pet : petCollections.allPets().values()) {
                         System.out.println(("[" + pet.getName() + "]"));
@@ -255,7 +317,7 @@ public class VirtualPetShelterApp {
 
                     break;
 
-                case 11:
+                case 12:
                     gameplay.close();
                     quitGame = true;
                     break;

@@ -1,6 +1,6 @@
 package pets_amok;
 
-public class VirtualPet {
+public abstract class VirtualPet {
     private String name;
     private String description;
     private int hunger;
@@ -30,6 +30,16 @@ public class VirtualPet {
     }
 
     // Getter and Setters
+
+    // instanceof tells you what class it is/what it is working from
+    public String getType() {
+        if (this instanceof RoboticPet) {
+            return "Robo   ";
+        } else {
+            return "Organic";
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -88,6 +98,14 @@ public class VirtualPet {
 
     // Methods
 
+    public abstract void oiling();
+
+    public abstract void cleanLitterBox();
+
+    public abstract void cleanCage();
+
+    public abstract void walkDoggy();
+
     public void play() {
         setMood(getMood() + 30);
     }
@@ -111,7 +129,7 @@ public class VirtualPet {
 
         setTiredness(getTiredness() - 5);
 
-        setMaintenance(getMaintenance() - 10);
+        setMaintenance(getMaintenance() - 5);
 
         if (getHunger() >= 100 || getThirst() >= 100 || getMaintenance() >= 100) {
             setMood(getMood() - 0);
@@ -125,32 +143,14 @@ public class VirtualPet {
 
     }
 
-    public void cleanLitterBox() {
-        setMaintenance(100);
-    }
-
-    public void cleanCage() {
-        setMaintenance(100);
-    }
-
-    public void walkDoggy() {
-        setMaintenance(getMaintenance() + 5);
-        setMood(getMood() + 30);
-    }
-
-    public void oiling() {
-        setMaintenance(100);
-        setMood(getMood() + 30);
-    }
-
-    public void status(){
+    public void status() {
         if (getMood() >= 80) {
             System.out.println("Feels great!");
-        } else if (getMood() >=50) {
+        } else if (getMood() >= 50) {
             System.out.println("Feels ok.");
         } else if (getMood() >= 30) {
             System.out.println("Is feeling uneasy.. :/");
-        } else if (getMood() >= 0){
+        } else if (getMood() >= 0) {
             System.out.println("Is unhappy... :(");
         }
     }

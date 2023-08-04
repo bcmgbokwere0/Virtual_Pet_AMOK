@@ -1,6 +1,10 @@
 package pets_amok;
 
-public class OrganicPet extends VirtualPet implements Dog, Cat {
+public abstract class OrganicPet extends VirtualPet{
+
+    public OrganicPet(String name, String description){
+        super(name, description);
+    }
 
     @Override
     public void feed() {
@@ -13,19 +17,17 @@ public class OrganicPet extends VirtualPet implements Dog, Cat {
     }
 
     @Override
-    public void cleanLitterBox() {
-        setMaintenance(100);
-    }
+    public abstract void cleanLitterBox();
 
     @Override
-    public void cleanCage() {
-        super.setMaintenance(100);
-    }
+    public abstract void cleanCage();
 
     @Override
-    public void walkDoggy() {
-        super.setMaintenance(getMaintenance() + 5);
-        setMood(getMood() + 30);
+    public abstract void walkDoggy();
+
+    @Override
+    public void oiling(){
+
     }
 
 }
