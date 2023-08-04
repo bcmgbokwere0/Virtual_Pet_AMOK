@@ -1,12 +1,13 @@
 package pets_amok;
 
-public class VirtualPet extends VirtualPetShelter {
+public abstract class VirtualPet {
     private String name;
     private String description;
     private int hunger;
     private int thirst;
     private int tiredness;
     private int mood;
+    private int maintenance;
 
     // Constructors
 
@@ -15,6 +16,7 @@ public class VirtualPet extends VirtualPetShelter {
         setThirst(100);
         setTiredness(100);
         setMood(100);
+        setMaintenance(100);
     }
 
     public VirtualPet(String newName, String newDesc) {
@@ -24,9 +26,20 @@ public class VirtualPet extends VirtualPetShelter {
         setThirst(100);
         setTiredness(100);
         setMood(100);
+        setMaintenance(100);
     }
 
     // Getter and Setters
+
+    // instanceof tells you what class it is/what it is working from
+    public String getType() {
+        if (this instanceof RoboticPet) {
+            return "Robo   ";
+        } else {
+            return "Organic";
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -75,15 +88,23 @@ public class VirtualPet extends VirtualPetShelter {
         this.mood = mood;
     }
 
+    public int getMaintenance() {
+        return maintenance;
+    }
+
+    public void setMaintenance(int maintenance) {
+        this.maintenance = maintenance;
+    }
+
     // Methods
 
-    public void feed() {
-        setHunger(getHunger() + 20);
-    }
+    public abstract void oiling();
 
-    public void drink() {
-        setThirst(getThirst() + 20);
-    }
+    public abstract void cleanLitterBox();
+
+    public abstract void cleanCage();
+
+    public abstract void walkDoggy();
 
     public void play() {
         setMood(getMood() + 30);
@@ -93,6 +114,14 @@ public class VirtualPet extends VirtualPetShelter {
         setTiredness(100);
     }
 
+    public void feed() {
+        setHunger(getHunger() + 20);
+    }
+
+    public void drink() {
+        setThirst(getThirst() + 20);
+    }
+
     public void tick() {
         setHunger(getHunger() - 5);
 
@@ -100,14 +129,29 @@ public class VirtualPet extends VirtualPetShelter {
 
         setTiredness(getTiredness() - 5);
 
-        if (getHunger() >= 100 || getThirst() >= 100) {
+        setMaintenance(getMaintenance() - 5);
+
+        if (getHunger() >= 100 || getThirst() >= 100 || getMaintenance() >= 100) {
             setMood(getMood() - 0);
-        } else if (getHunger() >= 70 || getThirst() >= 70) {
+        } else if (getHunger() >= 70 || getThirst() >= 70 || getMaintenance() >= 70) {
             setMood(getMood() - 5);
-        } else if (getHunger() >= 40 || getThirst() >= 40) {
+        } else if (getHunger() >= 40 || getThirst() >= 40 || getMaintenance() >= 40) {
             setMood(getMood() - 10);
-        } else if (getHunger() >= 20 || getThirst() >= 20) {
+        } else if (getHunger() >= 20 || getThirst() >= 20 || getMaintenance() >= 20) {
             setMood(getMood() - 20);
+        }
+
+    }
+
+    public void status() {
+        if (getMood() >= 80) {
+            System.out.println("Feels great!");
+        } else if (getMood() >= 50) {
+            System.out.println("Feels ok.");
+        } else if (getMood() >= 30) {
+            System.out.println("Is feeling uneasy.. :/");
+        } else if (getMood() >= 0) {
+            System.out.println("Is unhappy... :(");
         }
     }
 
