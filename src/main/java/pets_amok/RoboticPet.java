@@ -12,7 +12,6 @@ public class RoboticPet extends VirtualPet {
         setMood(getMood() + 30);
         setHunger(getHunger() + 20);
         setThirst(getThirst() + 20);
-
     }
 
     // cannot be fed
