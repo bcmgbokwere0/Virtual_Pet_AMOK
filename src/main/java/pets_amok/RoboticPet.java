@@ -1,6 +1,6 @@
 package pets_amok;
 
-public class RoboticPet extends VirtualPet {
+public abstract class RoboticPet extends VirtualPet {
 
     public RoboticPet(String name, String description) {
         super(name, description);
@@ -14,6 +14,9 @@ public class RoboticPet extends VirtualPet {
         setThirst(getThirst() + 20);
     }
 
+    @Override
+    public abstract void walkDoggy();
+
     // cannot be fed
     @Override
     public void feed() {
@@ -21,7 +24,6 @@ public class RoboticPet extends VirtualPet {
 
     @Override
     public void drink() {
-
     }
 
     @Override
@@ -30,9 +32,5 @@ public class RoboticPet extends VirtualPet {
 
     @Override
     public void cleanCage() {
-    }
-
-    @Override
-    public void walkDoggy() {
     }
 }

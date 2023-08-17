@@ -23,6 +23,10 @@ public class VirtualPetShelterApp {
         if (petType.toLowerCase().equals("o")) {
             System.out.println("Are you going to be admitting a Cat or dog? Please enter C for Cat, or D for Dog");
             petType = gameplay.nextLine();
+        } else if (petType.toLowerCase().equals("r")) {
+            System.out.println(
+                    "Are you going to be admitting a Robot Cat or dog? Please enter rc for Cat, or rd for Dog");
+            petType = gameplay.nextLine();
         }
 
         System.out.println(
@@ -35,9 +39,11 @@ public class VirtualPetShelterApp {
         String petDescription = gameplay.nextLine();
 
         switch (petType.toLowerCase()) {
-            case "r":
-                petCollections.addPet(new RoboticPet(tempString, petDescription));
+            case "rd":
+                petCollections.addPet(new RoboticDog(tempString, petDescription));
                 break;
+            case "rc":
+                petCollections.addPet(new RoboticCat(tempString, petDescription));
             case "c":
                 petCollections.addPet(new Cat(tempString, petDescription));
                 break;
@@ -284,12 +290,18 @@ public class VirtualPetShelterApp {
                         System.out.println(
                                 "Are you going to be admitting a Cat or dog? Please enter C for Cat, or D for Dog");
                         petType = gameplay.nextLine();
+                    } else if (petType.toLowerCase().equals("r")) {
+                        System.out.println(
+                                "Are you going to be admitting a Robot Cat or dog? Please enter rc for Cat, or rd for Dog");
+                        petType = gameplay.nextLine();
                     }
 
                     switch (petType.toLowerCase()) {
-                        case "r":
-                            petCollections.addPet(new RoboticPet(tempString, petDescription));
+                        case "rd":
+                            petCollections.addPet(new RoboticDog(tempString, petDescription));
                             break;
+                        case "rc":
+                            petCollections.addPet(new RoboticCat(tempString, petDescription));
                         case "c":
                             petCollections.addPet(new Cat(tempString, petDescription));
                             break;

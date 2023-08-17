@@ -8,6 +8,7 @@ public abstract class VirtualPet {
     private int tiredness;
     private int mood;
     private int maintenance;
+    private int tidiness;
 
     // Constructors
 
@@ -94,6 +95,14 @@ public abstract class VirtualPet {
 
     public void setMaintenance(int maintenance) {
         this.maintenance = maintenance;
+    }
+
+    public int getTidiness() {
+        return tidiness;
+    }
+
+    public void setTidiness(int tidiness) {
+        this.tidiness = tidiness;
     }
 
     // Methods

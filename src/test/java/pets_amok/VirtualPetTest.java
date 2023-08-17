@@ -7,12 +7,12 @@ public class VirtualPetTest {
     @Test
     public void testingOrganicNames() {
         OrganicPet testingApp = new Cat("Zebra","an animal");
-        assertEquals("Zebra", testingApp.getName(), "app should have Hello");
+        assertEquals("Zebra", testingApp.getName(), "Cat should be named Zebra");
     }
 
         @Test
     public void testRoboticOiling() {
-        RoboticPet testingApp = new RoboticPet("Frank", "the robot");
+        RoboticPet testingApp = new RoboticDog("Frank", "the robot");
         testingApp.oiling();
         assertEquals(100, testingApp.getMaintenance());
         assertEquals(130, testingApp.getMood());
