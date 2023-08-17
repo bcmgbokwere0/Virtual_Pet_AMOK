@@ -18,6 +18,7 @@ public abstract class VirtualPet {
         setTiredness(100);
         setMood(100);
         setMaintenance(100);
+        setTidiness(100);
     }
 
     public VirtualPet(String newName, String newDesc) {
@@ -28,6 +29,7 @@ public abstract class VirtualPet {
         setTiredness(100);
         setMood(100);
         setMaintenance(100);
+        setTidiness(100);
     }
 
     // Getter and Setters
@@ -140,13 +142,15 @@ public abstract class VirtualPet {
 
         setMaintenance(getMaintenance() - 5);
 
-        if (getHunger() >= 100 || getThirst() >= 100 || getMaintenance() >= 100) {
+        setTidiness(getTidiness() - 5);
+
+        if (getHunger() >= 100 || getThirst() >= 100 || getMaintenance() >= 100 || getTidiness() >= 100) {
             setMood(getMood() - 0);
-        } else if (getHunger() >= 70 || getThirst() >= 70 || getMaintenance() >= 70) {
+        } else if (getHunger() >= 70 || getThirst() >= 70 || getMaintenance() >= 70 || getTidiness() >= 70) {
             setMood(getMood() - 5);
-        } else if (getHunger() >= 40 || getThirst() >= 40 || getMaintenance() >= 40) {
+        } else if (getHunger() >= 40 || getThirst() >= 40 || getMaintenance() >= 40 || getTidiness() >= 40) {
             setMood(getMood() - 10);
-        } else if (getHunger() >= 20 || getThirst() >= 20 || getMaintenance() >= 20) {
+        } else if (getHunger() >= 20 || getThirst() >= 20 || getMaintenance() >= 20 || getTidiness() >= 20) {
             setMood(getMood() - 20);
         }
 

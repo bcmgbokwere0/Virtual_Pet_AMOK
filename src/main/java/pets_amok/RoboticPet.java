@@ -1,9 +1,11 @@
 package pets_amok;
 
 public abstract class RoboticPet extends VirtualPet {
+    private int maintenance;
 
     public RoboticPet(String name, String description) {
         super(name, description);
+        this.maintenance = 100;
     }
 
     @Override
@@ -12,6 +14,14 @@ public abstract class RoboticPet extends VirtualPet {
         setMood(getMood() + 30);
         setHunger(getHunger() + 20);
         setThirst(getThirst() + 20);
+    }
+
+    public int getMaintenance() {
+        return maintenance;
+    }
+
+    public void setMaintenance(int maintenance) {
+        this.maintenance = maintenance;
     }
 
     @Override

@@ -65,9 +65,9 @@ public class VirtualPetShelterApp {
         while (true) {
             System.out.println("Current Stats for Organic Pets:\n");
 
-            System.out.println("Pets   |Type       |Hunger |Thirst |Mood |Tiredness |Maintenance ");
+            System.out.println("Pets   |Type       |Hunger |Thirst |Mood |Tiredness |Health ");
 
-            System.out.println("-------|-----------|-------|-------|-----|----------|--------");
+            System.out.println("-------|-----------|-------|-------|-----|----------|-------");
 
             for (VirtualPet pet : petCollections.allPets().values()) {
 
