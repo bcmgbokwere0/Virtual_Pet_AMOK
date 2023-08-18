@@ -1,26 +1,31 @@
 package pets_amok;
 
-public abstract class RoboticPet extends VirtualPet {
-    private int maintenance;
+public class RoboticDog extends RoboticPet {
+    private int cage;
 
-    public RoboticPet(String name, String description) {
+    public RoboticDog(String name, String description) {
         super(name, description);
-        this.maintenance = 100;
+        setCage(100);
     }
 
-    public void oiling() {
-        setMaintenance(100);
-        setMood(getMood() + 30);
+    public int getCage() {
+        return cage;
     }
 
-    public int getMaintenance() {
-        return maintenance;
+    public void setCage(int cage) {
+        this.cage = cage;
     }
 
-    public void setMaintenance(int maintenance) {
-        this.maintenance = maintenance;
+    public void cleanCage() {
+        setCage(100);
+        setMood(getMood() + 20);
     }
 
+    public void walkDoggy() {
+        super.setMood(100);
+    }
+
+    @Override
     public void tick() {
         setMaintenance(getMaintenance() - 5);
         setTiredness(getTiredness() - 5);
@@ -33,6 +38,8 @@ public abstract class RoboticPet extends VirtualPet {
         } else if (getMaintenance() >= 20) {
             setMood(getMood() - 20);
         }
+        if (getMaintenance() <= 0) {
+            setCage(getCage() - 10);
+        }
     }
-
 }

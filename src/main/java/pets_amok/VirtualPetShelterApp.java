@@ -23,6 +23,10 @@ public class VirtualPetShelterApp {
         if (petType.toLowerCase().equals("o")) {
             System.out.println("Are you going to be admitting a Cat or dog? Please enter C for Cat, or D for Dog");
             petType = gameplay.nextLine();
+        } else if (petType.toLowerCase().equals("r")) {
+            System.out.println(
+                    "Are you going to be admitting a Robot Cat or dog? Please enter rc for Cat, or rd for Dog");
+            petType = gameplay.nextLine();
         }
 
         System.out.println(
@@ -35,8 +39,11 @@ public class VirtualPetShelterApp {
         String petDescription = gameplay.nextLine();
 
         switch (petType.toLowerCase()) {
-            case "r":
-                petCollections.addPet(new RoboticPet(tempString, petDescription));
+            case "rd":
+                petCollections.addPet(new RoboticDog(tempString, petDescription));
+                break;
+            case "rc":
+                petCollections.addPet(new RoboticCat(tempString, petDescription));
                 break;
             case "c":
                 petCollections.addPet(new Cat(tempString, petDescription));
@@ -59,9 +66,9 @@ public class VirtualPetShelterApp {
         while (true) {
             System.out.println("Current Stats for Organic Pets:\n");
 
-            System.out.println("Pets   |Type       |Hunger |Thirst |Mood |Tiredness |Maintenance ");
+            System.out.println("Pets   |Type       |Hunger |Thirst |Mood |Tiredness |Bladder |Cage |Oil ");
 
-            System.out.println("-------|-----------|-------|-------|-----|----------|--------");
+            System.out.println("-------|-----------|-------|-------|-----|----------|--------|-----|---");
 
             for (VirtualPet pet : petCollections.allPets().values()) {
 
@@ -73,11 +80,19 @@ public class VirtualPetShelterApp {
 
                 System.out.print("    |");
 
-                System.out.print(String.format("%-" + 5 + "s", pet.getHunger()));
+                if (pet instanceof OrganicPet) {
+                    System.out.print(String.format("%-" + 5 + "s", (int) ((OrganicPet) pet).getHunger()));
+                } else {
+                    System.out.print(String.format("%-" + 5 + "s", "N/A"));
+                }
 
                 System.out.print("  |");
 
-                System.out.print(String.format("%-" + 5 + "s", pet.getThirst()));
+                if (pet instanceof OrganicPet) {
+                    System.out.print(String.format("%-" + 5 + "s", (int) ((OrganicPet) pet).getThirst()));
+                } else {
+                    System.out.print(String.format("%-" + 5 + "s", "N/A"));
+                }
 
                 System.out.print("  |");
 
@@ -89,11 +104,34 @@ public class VirtualPetShelterApp {
 
                 System.out.print("     |");
 
-                System.out.println(String.format("%-" + 5 + "s", pet.getMaintenance()));
+                if (pet instanceof OrganicPet) {
+                    System.out.print(String.format("%-" + 5 + "s", (int) ((OrganicPet) pet).getBladder()));
+                } else {
+                    System.out.print(String.format("%-" + 5 + "s", "N/A"));
+                }
 
+                System.out.print("   |");
+
+                if (pet instanceof Dog) {
+                    System.out.print(String.format("%-" + 5 + "s", (int) ((Dog) pet).getCage()));
+                } else if (pet instanceof RoboticDog) {
+                    System.out.print(String.format("%-" + 5 + "s", (int) ((RoboticDog) pet).getCage()));
+                } else {
+                    System.out.print(String.format("%-" + 5 + "s", "N/A"));
+                }
+
+                System.out.print("|");
+
+                if (pet instanceof RoboticPet) {
+                    System.out.println(String.format("%-" + 5 + "s", (int) ((RoboticPet) pet).getMaintenance()));
+                } else {
+                    System.out.println(String.format("%-" + 5 + "s", "N/A"));
+                }
             }
+            System.out.println("\n");
+            System.out.println("Public LitterBox: " + petCollections.getLitterBox());
 
-            System.out.println("-------------------------------------------------");
+            System.out.println("----------------------------------------------------------------------");
 
             System.out.println("What would you like to do today?");
 
@@ -109,7 +147,7 @@ public class VirtualPetShelterApp {
 
             System.out.println("6. Clean Dog Cages.");
 
-            System.out.println("7. Clean Litter Boxes.");
+            System.out.println("7. Clean Litter Box.");
 
             System.out.println("8. Oil all robotic pets.");
 
@@ -217,8 +255,7 @@ public class VirtualPetShelterApp {
                 case 6:
                     System.out.println("----------------------------------------------------------");
 
-                    System.out
-                            .println("You geared up and braced yourself to clean all the dog cages....");
+                    System.out.println("You geared up and braced yourself to clean all the dog cages....");
 
                     System.out.println("All the dog's waste levels were refreshed.... but at what cost???");
 
@@ -231,14 +268,13 @@ public class VirtualPetShelterApp {
                 case 7:
                     System.out.println("----------------------------------------------------------");
 
-                    System.out
-                            .println("You geared up and grabbed your shovel to clean all the cat litter....");
+                    System.out.println("You geared up and grabbed your shovel to clean all the cat litter....");
 
                     System.out.println("All the cat's waste levels were refreshed");
 
                     System.out.println("----------------------------------------------------------");
 
-                    petCollections.cleanCatLitter();
+                    petCollections.cleanLitterBox();
 
                     break;
 
@@ -284,12 +320,18 @@ public class VirtualPetShelterApp {
                         System.out.println(
                                 "Are you going to be admitting a Cat or dog? Please enter C for Cat, or D for Dog");
                         petType = gameplay.nextLine();
+                    } else if (petType.toLowerCase().equals("r")) {
+                        System.out.println(
+                                "Are you going to be admitting a Robot Cat or dog? Please enter rc for Cat, or rd for Dog");
+                        petType = gameplay.nextLine();
                     }
 
                     switch (petType.toLowerCase()) {
-                        case "r":
-                            petCollections.addPet(new RoboticPet(tempString, petDescription));
+                        case "rd":
+                            petCollections.addPet(new RoboticDog(tempString, petDescription));
                             break;
+                        case "rc":
+                            petCollections.addPet(new RoboticCat(tempString, petDescription));
                         case "c":
                             petCollections.addPet(new Cat(tempString, petDescription));
                             break;
