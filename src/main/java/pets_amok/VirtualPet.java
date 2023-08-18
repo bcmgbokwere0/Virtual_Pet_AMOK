@@ -122,13 +122,13 @@ public abstract class VirtualPet {
 
         setBladder(getBladder() - 5);
 
-        if (getHunger() >= 100 || getThirst() >= 100 || getBladder() >= 100) {
+        if (getBladder() >= 100) {
             setMood(getMood() - 0);
-        } else if (getHunger() >= 70 || getThirst() >= 70 || getBladder() >= 70) {
+        } else if (getBladder() >= 70) {
             setMood(getMood() - 5);
-        } else if (getHunger() >= 40 || getThirst() >= 40 || getBladder() >= 40) {
+        } else if (getBladder() >= 40) {
             setMood(getMood() - 10);
-        } else if (getHunger() >= 20 || getThirst() >= 20 || getBladder() >= 20) {
+        } else if (getBladder() >= 20) {
             setMood(getMood() - 20);
         }
     }

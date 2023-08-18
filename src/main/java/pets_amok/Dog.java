@@ -16,7 +16,6 @@ public class Dog extends OrganicPet {
         this.cage = cage;
     }
 
-
     public void cleanCage() {
         setCage(100);
         setMood(getMood() + 20);
@@ -27,5 +26,28 @@ public class Dog extends OrganicPet {
         setBladder(getBladder() + 30);
     }
 
+    @Override
+    public void tick() {
+        setHunger(getHunger() - 5);
 
+        setThirst(getThirst() - 5);
+
+        setTiredness(getTiredness() - 5);
+
+        setBladder(getBladder() - 5);
+
+        if (getBladder() >= 100) {
+            setMood(getMood() - 0);
+        } else if (getBladder() >= 70) {
+            setMood(getMood() - 5);
+        } else if (getBladder() >= 40) {
+            setMood(getMood() - 10);
+        } else if (getBladder() >= 20) {
+            setMood(getMood() - 20);
+        }
+
+        if (getBladder() <= 0) {
+            setCage(getCage() - 10);
+        }
+    }
 }

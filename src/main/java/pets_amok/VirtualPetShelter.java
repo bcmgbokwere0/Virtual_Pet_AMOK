@@ -89,15 +89,6 @@ public class VirtualPetShelter {
         petCollections.forEach((name, pet) -> {
             if (pet instanceof Cat) {
                 setLitterBox(getLitterBox() - 10);
-                    if (pet.getBladder() >= 100) {
-                        pet.setMood(pet.getMood() - 0);
-                    } else if (pet.getBladder() >= 70) {
-                        pet.setMood(pet.getMood() - 5);
-                    } else if (pet.getBladder() >= 40) {
-                        pet.setMood(pet.getMood() - 10);
-                    } else if (pet.getBladder() >= 20) {
-                        pet.setMood(pet.getMood() - 20);
-                    }
                 }
         });
     }
