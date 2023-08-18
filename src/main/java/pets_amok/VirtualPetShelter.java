@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class VirtualPetShelter {
     HashMap<String, VirtualPet> petCollections;
+    private int litterBox;
 
     // Constructor
     public VirtualPetShelter() {
@@ -34,6 +35,14 @@ public class VirtualPetShelter {
 
     public void setPet(Dog newPet) {
         this.petCollections.put(newPet.getName(), newPet);
+    }
+
+    public int getLitterBox() {
+        return litterBox;
+    }
+
+    public void setLitterBox(int litterBox) {
+        this.litterBox = litterBox;
     }
     // Methods
 
@@ -90,5 +99,9 @@ public class VirtualPetShelter {
 
     public void walkAllDogs() {
         petCollections.forEach((name, pet) -> pet.walkDoggy());
+    }
+
+    public void cleanLitterBox(){
+        litterBox = 100;
     }
 }

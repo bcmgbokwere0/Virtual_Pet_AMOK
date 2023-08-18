@@ -45,9 +45,6 @@ public abstract class OrganicPet extends VirtualPet {
     public abstract void cleanCage();
 
     @Override
-    public abstract void walkDoggy();
-
-    @Override
     public void oiling() {
 
     }

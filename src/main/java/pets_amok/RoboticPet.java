@@ -24,6 +24,20 @@ public abstract class RoboticPet extends VirtualPet {
         this.maintenance = maintenance;
     }
 
+    public void tick() {
+        setMaintenance(getMaintenance() - 5);
+
+        if (getMaintenance() >= 100) {
+            setMood(getMood() - 0);
+        } else if (getMaintenance() >= 70) {
+            setMood(getMood() - 5);
+        } else if (getMaintenance() >= 40) {
+            setMood(getMood() - 10);
+        } else if (getMaintenance() >= 20) {
+            setMood(getMood() - 20);
+        }
+    }
+
     @Override
     public abstract void walkDoggy();
 

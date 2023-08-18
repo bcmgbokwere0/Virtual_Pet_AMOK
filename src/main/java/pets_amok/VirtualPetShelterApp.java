@@ -65,7 +65,7 @@ public class VirtualPetShelterApp {
         while (true) {
             System.out.println("Current Stats for Organic Pets:\n");
 
-            System.out.println("Pets   |Type       |Hunger |Thirst |Mood |Tiredness |Health ");
+            System.out.println("Pets   |Type       |Hunger |Thirst |Mood |Tiredness |Bladder |Cage |Oil ");
 
             System.out.println("-------|-----------|-------|-------|-----|----------|-------");
 
@@ -95,7 +95,17 @@ public class VirtualPetShelterApp {
 
                 System.out.print("     |");
 
-                System.out.println(String.format("%-" + 5 + "s", pet.getMaintenance()));
+                System.out.println(String.format("%-" + 5 + "s", pet.getBladder()));
+
+                System.out.println("|");
+
+                //System.out.println(String.format("%-" + 5 + "s", pet.)); get dog cage information
+
+                System.out.println(" |");
+
+                //System.out.println(String.format("%" + 5 + "s", pet.get)); get robot oil
+
+                System.out.println("Public LitterBox: " + petCollections.getLitterBox());
 
             }
 

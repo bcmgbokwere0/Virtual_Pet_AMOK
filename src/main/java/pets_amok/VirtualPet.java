@@ -7,8 +7,7 @@ public abstract class VirtualPet {
     private int thirst;
     private int tiredness;
     private int mood;
-    private int maintenance;
-    private int tidiness;
+    private int bladder;
 
     // Constructors
 
@@ -17,8 +16,7 @@ public abstract class VirtualPet {
         setThirst(100);
         setTiredness(100);
         setMood(100);
-        setMaintenance(100);
-        setTidiness(100);
+        setBladder(100);
     }
 
     public VirtualPet(String newName, String newDesc) {
@@ -28,8 +26,7 @@ public abstract class VirtualPet {
         setThirst(100);
         setTiredness(100);
         setMood(100);
-        setMaintenance(100);
-        setTidiness(100);
+        setBladder(100);
     }
 
     // Getter and Setters
@@ -91,20 +88,12 @@ public abstract class VirtualPet {
         this.mood = mood;
     }
 
-    public int getMaintenance() {
-        return maintenance;
+    public int getBladder() {
+        return bladder;
     }
 
-    public void setMaintenance(int maintenance) {
-        this.maintenance = maintenance;
-    }
-
-    public int getTidiness() {
-        return tidiness;
-    }
-
-    public void setTidiness(int tidiness) {
-        this.tidiness = tidiness;
+    public void setBladder(int bladder) {
+        this.bladder = bladder;
     }
 
     // Methods
@@ -140,17 +129,15 @@ public abstract class VirtualPet {
 
         setTiredness(getTiredness() - 5);
 
-        setMaintenance(getMaintenance() - 5);
+        setBladder(getBladder() - 5);
 
-        setTidiness(getTidiness() - 5);
-
-        if (getHunger() >= 100 || getThirst() >= 100 || getMaintenance() >= 100 || getTidiness() >= 100) {
+        if (getHunger() >= 100 || getThirst() >= 100 || getBladder() >= 100) {
             setMood(getMood() - 0);
-        } else if (getHunger() >= 70 || getThirst() >= 70 || getMaintenance() >= 70 || getTidiness() >= 70) {
+        } else if (getHunger() >= 70 || getThirst() >= 70 || getBladder() >= 70) {
             setMood(getMood() - 5);
-        } else if (getHunger() >= 40 || getThirst() >= 40 || getMaintenance() >= 40 || getTidiness() >= 40) {
+        } else if (getHunger() >= 40 || getThirst() >= 40 || getBladder() >= 40) {
             setMood(getMood() - 10);
-        } else if (getHunger() >= 20 || getThirst() >= 20 || getMaintenance() >= 20 || getTidiness() >= 20) {
+        } else if (getHunger() >= 20 || getThirst() >= 20 || getBladder() >= 20) {
             setMood(getMood() - 20);
         }
 
