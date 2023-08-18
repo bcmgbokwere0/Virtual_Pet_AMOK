@@ -23,7 +23,7 @@ public abstract class RoboticPet extends VirtualPet {
 
     public void tick() {
         setMaintenance(getMaintenance() - 5);
-
+        setTiredness(getTiredness() - 5);
         if (getMaintenance() >= 100) {
             setMood(getMood() - 0);
         } else if (getMaintenance() >= 70) {
@@ -33,5 +33,16 @@ public abstract class RoboticPet extends VirtualPet {
         } else if (getMaintenance() >= 20) {
             setMood(getMood() - 20);
         }
+        
+        // if (getMaintenance() >= 100) {
+        //     setCage(RoboticDog.getCage() - 0);
+        // } else if (getMaintenance() >= 70) {
+        //     setCage(getCage() - 5);
+        // } else if (getMaintenance() >= 40) {
+        //     setCage(getCage() - 10);
+        // } else if (getMaintenance() >= 20) {
+        //     setCage(getCage() - 20);
+        // }
     }
-}
+
+    }

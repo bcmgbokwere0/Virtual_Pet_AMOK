@@ -30,7 +30,7 @@ public abstract class OrganicPet extends VirtualPet {
 
     @Override
     public void feed() {
-        super.setHunger(getHunger() + 20);
+        setHunger(getHunger() + 20);
     }
 
     @Override

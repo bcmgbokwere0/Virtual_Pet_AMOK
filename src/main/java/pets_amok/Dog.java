@@ -23,7 +23,7 @@ public class Dog extends OrganicPet {
     }
 
     public void walkDoggy() {
-        super.setMood(100);
+        setMood(100);
         setBladder(getBladder() + 30);
     }
 
