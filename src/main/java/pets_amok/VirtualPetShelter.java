@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class VirtualPetShelter {
     HashMap<String, VirtualPet> petCollections;
-    private int litterBox;
+    private static int litterBox = 100;
 
     // Constructor
     public VirtualPetShelter() {
@@ -21,11 +21,18 @@ public class VirtualPetShelter {
         this.petCollections.put(newPet.getName(), newPet);
     }
 
-    public void setPet(RoboticPet newPet) {
+    // public void setPet(RoboticPet newPet) {
+    //     this.petCollections.put(newPet.getName(), newPet);
+    // }
+
+    // public void setPet(OrganicPet newPet) {
+    //     this.petCollections.put(newPet.getName(), newPet);
+    // }
+    public void setPet(RoboticCat newPet) {
         this.petCollections.put(newPet.getName(), newPet);
     }
 
-    public void setPet(OrganicPet newPet) {
+    public void setPet(RoboticDog newPet) {
         this.petCollections.put(newPet.getName(), newPet);
     }
 
@@ -41,8 +48,8 @@ public class VirtualPetShelter {
         return litterBox;
     }
 
-    public void setLitterBox(int litterBox) {
-        this.litterBox = litterBox;
+    public void setLitterBox(int newLitterBox) {
+        litterBox = newLitterBox;
     }
     // Methods
 
@@ -79,18 +86,38 @@ public class VirtualPetShelter {
 
     public void tick() {
         petCollections.forEach((name, pet) -> pet.tick());
+        petCollections.forEach((name, pet) -> {
+            if (pet instanceof Cat) {
+                    if (pet.getBladder() >= 100) {
+                        pet.setMood(pet.getMood() - 0);
+                    } else if (pet.getBladder() >= 70) {
+                        pet.setMood(pet.getMood() - 5);
+                    } else if (pet.getBladder() >= 40) {
+                        pet.setMood(pet.getMood() - 10);
+                    } else if (pet.getBladder() >= 20) {
+                        pet.setMood(pet.getMood() - 20);
+                    }
+                }
+                setLitterBox(getLitterBox() - 10);
+        });
+
     }
 
     public void oilingRobots() {
-        petCollections.forEach((name, pet) -> pet.oiling());
+        petCollections.forEach((name, pet) -> {
+            if (pet instanceof RoboticPet) {
+                ((RoboticPet) pet).oiling();
+            }
+        });
+
     }
 
     public void cleanDogCages() {
-        petCollections.forEach((name, pet) -> pet.cleanCage());
-    }
-
-    public void cleanCatLitter() {
-        petCollections.forEach((name, pet) -> pet.cleanLitterBox());
+        petCollections.forEach((name, pet) -> {
+            if (pet instanceof Dog) {
+                ((Dog) pet).cleanCage();
+            }
+        });
     }
 
     public void checkStatus(String tempString) {
@@ -98,10 +125,23 @@ public class VirtualPetShelter {
     }
 
     public void walkAllDogs() {
-        petCollections.forEach((name, pet) -> pet.walkDoggy());
+        petCollections.forEach((name, pet) -> {
+            if (pet instanceof Dog) {
+                ((Dog) pet).walkDoggy(); 
+            } else if (pet instanceof RoboticDog) {
+                ((RoboticDog) pet).walkDoggy();
+            }
+        });
     }
 
-    public void cleanLitterBox(){
+    public void cleanLitterBox() {
+        petCollections.forEach((name, pet) -> {
+            if (pet instanceof Cat) {
+                ((Cat) pet).setBladder(100);
+                ((Cat) pet).setMood(((Cat) pet).getMood() + 20);
+            }
+        });
+
         litterBox = 100;
     }
 }

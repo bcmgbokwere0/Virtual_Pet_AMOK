@@ -22,7 +22,7 @@ public class VirtualPetTest {
 
         @Test
     public void testWalkingDog() {
-        OrganicPet testingApp = new Dog("Fido","a dog");
+        Dog testingApp = new Dog("Fido","a dog");
         testingApp.walkDoggy();
         assertEquals(100, testingApp.getMood());
         assertEquals(130, testingApp.getBladder());

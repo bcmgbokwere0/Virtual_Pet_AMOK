@@ -8,12 +8,9 @@ public abstract class RoboticPet extends VirtualPet {
         this.maintenance = 100;
     }
 
-    @Override
     public void oiling() {
         setMaintenance(100);
         setMood(getMood() + 30);
-        setHunger(getHunger() + 20);
-        setThirst(getThirst() + 20);
     }
 
     public int getMaintenance() {
@@ -36,25 +33,5 @@ public abstract class RoboticPet extends VirtualPet {
         } else if (getMaintenance() >= 20) {
             setMood(getMood() - 20);
         }
-    }
-
-    @Override
-    public abstract void walkDoggy();
-
-    // cannot be fed
-    @Override
-    public void feed() {
-    }
-
-    @Override
-    public void drink() {
-    }
-
-    @Override
-    public void cleanLitterBox() {
-    }
-
-    @Override
-    public void cleanCage() {
     }
 }

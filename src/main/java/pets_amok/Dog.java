@@ -5,6 +5,7 @@ public class Dog extends OrganicPet {
 
     public Dog(String name, String description) {
         super(name, description);
+        setCage(100);
     }
 
     public int getCage() {
@@ -15,18 +16,16 @@ public class Dog extends OrganicPet {
         this.cage = cage;
     }
 
-    @Override
+
     public void cleanCage() {
         setCage(100);
+        setMood(getMood() + 20);
     }
 
-    @Override
     public void walkDoggy() {
         super.setMood(100);
         setBladder(getBladder() + 30);
     }
 
-    @Override
-    public void cleanLitterBox() {
-    }
+
 }

@@ -6,7 +6,6 @@ public class RoboticCat extends RoboticPet{
         super(name, description);
     }
 
-public void walkDoggy(){
-}
+
 
 }

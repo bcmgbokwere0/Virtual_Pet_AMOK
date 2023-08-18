@@ -33,7 +33,7 @@ public abstract class VirtualPet {
 
     // instanceof tells you what class it is/what it is working from
     public String getType() {
-        if (this instanceof RoboticPet) {
+        if (this instanceof RoboticCat || this instanceof RoboticDog) {
             return "Robo   ";
         } else {
             return "Organic";
@@ -97,15 +97,6 @@ public abstract class VirtualPet {
     }
 
     // Methods
-
-    public abstract void oiling();
-
-    public abstract void cleanLitterBox();
-
-    public abstract void cleanCage();
-
-    public abstract void walkDoggy();
-
     public void play() {
         setMood(getMood() + 30);
     }
@@ -140,7 +131,6 @@ public abstract class VirtualPet {
         } else if (getHunger() >= 20 || getThirst() >= 20 || getBladder() >= 20) {
             setMood(getMood() - 20);
         }
-
     }
 
     public void status() {

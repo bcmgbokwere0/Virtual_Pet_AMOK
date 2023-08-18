@@ -38,15 +38,4 @@ public abstract class OrganicPet extends VirtualPet {
         setThirst(getThirst() + 20);
     }
 
-    @Override
-    public abstract void cleanLitterBox();
-
-    @Override
-    public abstract void cleanCage();
-
-    @Override
-    public void oiling() {
-
-    }
-
 }
