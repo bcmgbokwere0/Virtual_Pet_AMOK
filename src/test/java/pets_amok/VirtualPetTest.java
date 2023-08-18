@@ -16,15 +16,12 @@ public class VirtualPetTest {
         testingApp.oiling();
         assertEquals(100, testingApp.getMaintenance());
         assertEquals(130, testingApp.getMood());
-        assertEquals(120, testingApp.getHunger());
-        assertEquals(120, testingApp.getThirst());
     }
 
         @Test
     public void testWalkingDog() {
-        Dog testingApp = new Dog("Fido","a dog");
+        RoboticDog testingApp = new RoboticDog("Fido","a robotic dog");
         testingApp.walkDoggy();
         assertEquals(100, testingApp.getMood());
-        assertEquals(130, testingApp.getBladder());
     }
 }
